@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "silla",
+    "description": "silla de madera",
+    "price": 5000,
+    "thumbnail": "imagen",
+    "code": "a001",
+    "stock": 150
+  },
+  {
+    "id": 2,
+    "title": "mesa",
+    "description": "mesa redonda",
+    "price": 15000,
+    "thumbnail": "imagen",
+    "code": "a002",
+    "stock": 100
+  }
+]
