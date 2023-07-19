@@ -88,9 +88,9 @@ class ProductManager{
     }
 }
 
-async function generator(){
+//async function generator(){
     
-    const pm = new ProductManager("./files/product.json");
+    //const pm = new ProductManager("./files/product.json");
     
     //await pm.addProduct("silla", "silla de madera", 5000, "imagen", "a001", 150);
     //await pm.addProduct("mesa", "mesa redonda", 15000, "imagen", "a002", 100);
@@ -100,13 +100,13 @@ async function generator(){
 
     //await pm.deleteProduct(3);
 
-    const pbyId= await pm.getProductbyId(1);
+    //const pbyId= await pm.getProductbyId(1);
 
     //const listp = await pm.getProducts();
-    console.log(pbyId);
+    //console.log(pbyId);
     
-}
+//}
 
-generator();
+//generator();
 
 module.exports = ProductManager;

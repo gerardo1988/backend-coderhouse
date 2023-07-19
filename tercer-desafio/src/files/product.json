@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "silla",
+    "description": "silla de madera",
+    "price": 5000,
+    "thumbnail": "imagen",
+    "code": "a001",
+    "stock": 150
+  },
+  {
+    "id": 2,
+    "title": "mesa",
+    "description": "mesa redonda",
+    "price": 15000,
+    "thumbnail": "imagen",
+    "code": "a002",
+    "stock": 100
+  },
+  {
+    "id": 3,
+    "title": "estufa",
+    "description": "estufa tiro balanceado",
+    "price": 35000,
+    "thumbnail": "imagen",
+    "code": "a003",
+    "stock": 150
+  },
+  {
+    "id": 4,
+    "title": "Lampara",
+    "description": "lampara de escritorio",
+    "price": 5000,
+    "thumbnail": "imagen",
+    "code": "a004",
+    "stock": 25
+  },
+  {
+    "id": 5,
+    "title": "ventilador",
+    "description": "ventilador de techo",
+    "price": 19000,
+    "thumbnail": "imagen",
+    "code": "a005",
+    "stock": 30
+  },
+  {
+    "id": 6,
+    "title": "cama",
+    "description": "cama 2 plazas",
+    "price": 65000,
+    "thumbnail": "imagen",
+    "code": "a006",
+    "stock": 15
+  },
+  {
+    "id": 7,
+    "title": "sofa",
+    "description": "sofa largo",
+    "price": 50000,
+    "thumbnail": "imagen",
+    "code": "a007",
+    "stock": 17
+  },
+  {
+    "id": 8,
+    "title": "colchon",
+    "description": "colchon 1 plaza",
+    "price": 25000,
+    "thumbnail": "imagen",
+    "code": "a008",
+    "stock": 11
+  },
+  {
+    "id": 9,
+    "title": "mesa",
+    "description": "mesa de jardin",
+    "price": 15000,
+    "thumbnail": "imagen",
+    "code": "a009",
+    "stock": 20
+  },
+  {
+    "id": 10,
+    "title": "alfombra",
+    "description": "alfombra felpuda",
+    "price": 6000,
+    "thumbnail": "imagen",
+    "code": "a010",
+    "stock": 30
+  }
+]
