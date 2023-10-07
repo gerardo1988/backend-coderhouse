@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/products',productsRoutes);
 app.use('/api/carts',cartsRoutes);
 
-app.listen(config.port,()=>{
+const PORT = 9090;
+app.listen(PORT,()=>{
     console.log("servidor corriendo en el puerto " + config.port);
 })

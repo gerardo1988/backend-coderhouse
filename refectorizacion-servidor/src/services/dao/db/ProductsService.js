@@ -1,29 +1,28 @@
-import { ProductsModel } from '../models/productsModel.js';
+import { ProductsModel } from '../db/models/productsModel.js';
 
 export default class ProductsService {
-    async getAll(limit = 10, sort, stockQuery = null, page = 1) {
+    
+    getAll = async() => {
         try {
-            const query = stockQuery !== null ? { stock: stockQuery } : {};
 
-            const options = {
-                page: page,
-                limit: limit,
-                sort: { price: sort === 'asc' ? 1 : -1 }
-            };
+            let products = await ProductsModel.find();
+            return products.map(product=> product.toObject());
 
-            const products = await ProductsModel.paginate(query, options);
-
-            return products;
         } catch (error) {
+            
             throw new Error(error);
         }
     }
 
-    async save(product) { 
+    save= async(product)=> { 
+        
         try {
-            let saveProduct = await ProductsModel.create(product);
-            return saveProduct;
+            
+            let result = await ProductsModel.create(product);
+            return result;
+        
         } catch (error) {
+            
             throw new Error(error);
         }
     }

@@ -1,4 +1,4 @@
-import { CartsModel } from "../models/cartsModel.js";
+import { CartsModel } from "../db/models/cartsModel.js";
 
 export default class CartsService{
    
@@ -18,8 +18,8 @@ export default class CartsService{
     save = async (cart) =>{
         try {
 
-            let saveCart = await CartsModel.find(cart);
-            return saveCart;
+            let result = await CartsModel.create(cart);
+            return result;
         
         } catch (error) {
 
