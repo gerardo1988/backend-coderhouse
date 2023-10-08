@@ -24,7 +24,7 @@ async function initializeMongoService() {
     }
 }
 
-//solo voy a trabajar con mongodb 
+//solo voy a trabajar con mongodb no hice lo de file system
 switch (config.persistence) {
     case 'mongodb':
 

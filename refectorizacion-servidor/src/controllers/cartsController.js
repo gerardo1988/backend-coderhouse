@@ -31,3 +31,31 @@ export async function saveCart(req, res){
     }
 }
 
+export async function deleteCart(req, res){
+
+    try {
+        
+        let _id = req.params._id;
+        let result = await cartsService.delete(_id);
+        res.status(200).send({message: "se elimino el carrito con id: " + _id})
+    } catch (error) {
+        
+        console.error(error);
+        res.status(500).send({error:error, message:"no se pudo eliminar el carrito"});
+    }
+}
+
+export async function getOneCart(req,res){
+
+    try {
+
+        let _id = req.params._id;
+        let result = await cartsService.getOne(_id);
+        res.status(200).send(result)
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({error:error, message:"no encontro ningun carrito con el id: " + _id});
+    }
+}
+

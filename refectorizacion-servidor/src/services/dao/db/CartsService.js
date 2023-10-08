@@ -28,5 +28,29 @@ export default class CartsService{
         }       
     }
 
+    delete = async(_id) =>{
+        try {
+
+            let deleteCart = await CartsModel.deleteOne({_id:_id});
+            return deleteCart;
+            
+        } catch (error) {
+            
+            throw new Error(error);
+        }
+    }
+
+    getOne = async(_id)=>{
+        try {
+
+            let findCart = await CartsModel.findById({_id:_id});
+            return findCart;
+            
+        } catch (error) {
+            
+            throw new Error(error);
+        }
+    }
+
 
 }
