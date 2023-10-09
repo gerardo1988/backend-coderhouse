@@ -3,6 +3,7 @@ import MongoSingleton from "../config/mongodb-singleton.js";
 
 let productsService;
 let cartsService;
+let usersService;
 
 async function initializeMongoService() {
     try {
@@ -17,6 +18,11 @@ async function initializeMongoService() {
         cartsService = new cartsServiceMongo();
         console.log("Servicio de carrito cargado: ");
         console.log(cartsService);
+
+        const { default: userServiceMongo } = await import("./dao/db/UserService.js");
+        usersService = new userServiceMongo();
+        console.log("Servicio de usuario cargado: ");
+        console.log(usersService);
         
     } catch (error) {
         console.error("Error al iniciar MongoDB: ", error);
@@ -36,4 +42,4 @@ switch (config.persistence) {
         process.exit(1);
 }
 
-export { productsService, cartsService }
+export { productsService, cartsService, usersService }
