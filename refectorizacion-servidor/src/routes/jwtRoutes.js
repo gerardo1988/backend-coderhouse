@@ -1,11 +1,8 @@
 import { Router } from "express";
-/*import * as CartsController from "../controllers/cartsController.js";*/
+import * as JwtController from "../controllers/jwtController.js";
 
 const router = Router();
 
-/*router.get("/", CartsController.getCarts);
-router.post("/", CartsController.saveCart);
-router.delete("/:_id", CartsController.deleteCart);
-router.get("/:_id", CartsController.getOneCart);*/
+router.post("/", JwtController.loginUser);
 
 export default router;

@@ -1,4 +1,5 @@
 import { usersService } from "../services/factory.js";
+import { createHash } from "../utils.js";
 
 //const productsService = new ProductsService();
 
@@ -17,10 +18,21 @@ export async function getUsers(req, res){
 }
 
 export async function saveUser(req, res){
-    
-    try {
 
-        let result= await usersService.save(req.body);
+    //traigo los datos del body y los guardo en un objeto
+    const user={
+        first_name: req.body.first_name,
+        last_name:req.body.last_name,
+        email:req.body.email,
+        age: req.body.age,
+        password: createHash(req.body.password),
+        loggedBy: req.body.loggedBy,
+        role:req.body.role
+    }
+   
+    try {
+   
+        let result= await usersService.save(user);
         res.status(201).send(result);
         
     } catch (error) {
