@@ -26,5 +26,7 @@ export default {
     mongoUrl: process.env.MONGO_URL,
     persistence: program.opts().persist,
     adminName: process.env.ADMIN_NAME,
-    adminPassword: process.env.ADMIN_PASSWORD
+    adminPassword: process.env.ADMIN_PASSWORD,
+    gmailAccount: process.env.GMAIL_ACCOUNT,
+    gmailPassSecret: process.env.GMAIL_APP_PASWD
 };

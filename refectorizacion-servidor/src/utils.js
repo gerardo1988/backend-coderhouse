@@ -19,7 +19,7 @@ export const PRIVATE_KEY= "MiClaveSercretaDeCoderhouse";
 //metodo para generar el token
 export const generateJWToken= (user) =>{
     return jwt.sign({user}, PRIVATE_KEY, {expiresIn: '60s'});
-}
+};
 
 // Metodo que autentica el token JWT
 export const authToken = (req, res, next)=>{

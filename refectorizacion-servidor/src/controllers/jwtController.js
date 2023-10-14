@@ -3,10 +3,10 @@ import { isvalidPassword } from '../utils.js'
 import { generateJWToken } from '../utils.js';
 
 export async function loginUser (req, res){
-    
-    const { email, password } = req.body;
 
     try {
+
+        const { email, password } = req.body;
         
         const user = await userModel.findOne({email:email});
         console.log("usuario encontrado para login: " + user);
@@ -18,8 +18,11 @@ export async function loginUser (req, res){
 
         if(!isvalidPassword(user, password)){
             console.warn("credenciales invalidas para el usuario: " + email);
+            console.log(isvalidPassword(user,password));
             return res.status(401).send({status: "error", error: "El usuario y la contraseña no coinciden"});
         }
+
+        console.log(isvalidPassword(user,password));
 
         //crea el token
         const tokenUser={
@@ -39,9 +42,10 @@ export async function loginUser (req, res){
         })
 
         //si todo va bien me larga el siguiente mensaje
-        return res.status(200).send({status: "success", message: "se ha logeado correctamente"});
+        res.status(200).send({status: "success", message: "se ha logeado correctamente"});
         
     } catch (error) {
-        
+        console.error(error);
+        return res.status(500).send({ status: "error", error: "Error interno de la applicacion." });
     }
 }
