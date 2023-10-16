@@ -4,10 +4,8 @@ import mongoosePaginate from "mongoose-paginate-v2";
 const Schema = new mongoose.Schema({
     products: [
         {
-            product: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "Products" // Referencia al modelo Products
-            }
+           type: mongoose.SchemaTypes.ObjectId,
+           ref: 'Products'
         }
     ]
 });

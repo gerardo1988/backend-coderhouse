@@ -23,6 +23,13 @@ const Schema = new mongoose.Schema({
         require: [true,"el numero de stock es requerido"]
     },
 
+    cart:[
+        {
+            type: mongoose.SchemaTypes.ObjectId,
+            ref: 'Carts'
+         }
+    ]
+
 });
 
 Schema.plugin(mongoosePaginate);
