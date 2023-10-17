@@ -1,13 +1,58 @@
 import passport from 'passport';
 import { userModel } from '../services/dao/db/models/userModel.js';
 import jwtStrategy from 'passport-jwt';
+import GitHubStrategy from 'passport-github2';
 import { PRIVATE_KEY } from '../utils.js';
+import { usersService } from '../services/factory.js';
 
 const JwtStrategy = jwtStrategy.Strategy;
 const ExtractJWT = jwtStrategy.ExtractJwt;
 
 const initializePassport = () =>{
 
+    /** Estrategia con Github */
+    passport.use('github', new GitHubStrategy(
+
+        {
+            clientID: 'Iv1.9e8cd6f0fb8a5c56',
+            clientSecret: 'e615f4da0b78336e0375aec0ee13742b0370b2d6',
+            callbackUrl:'http://localhost:9090/api/sessions/githubcallback'
+        },
+
+        async(accessToken, refreshToken, profile,done)=>{
+            
+            console.log("Profile obtenido del usuario: " + profile);
+
+            try {
+                
+                const user = await userModel.findOne({email: profile._json.email});
+                console.log("Usuario encontrado para login por github: " + user);
+
+                if (!user) {
+                    
+                    console.warn("no existe el usuario con el username: " + profile._json.email);
+
+                    let newUser = {
+                        first_name: profile._json.name,
+                        last_name: '',
+                        email: profile._json.email,
+                        age: '',
+                        password: '',
+                        loggedBy: 'GitHub',
+                        role: 'user'
+                    }
+                    const result= usersService.save(newUser);
+                    done(null, result);
+                }
+
+            } catch (error) {
+                return done(error);
+            }
+        }
+
+    ));
+
+    /** Estrategia con jwt */
     passport.use('jwt', new JwtStrategy(
 
         //extraigo la cookie

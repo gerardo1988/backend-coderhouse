@@ -1,5 +1,5 @@
 import { usersService } from "../services/factory.js";
-import { createHash } from "../utils.js";
+import { createHash,isvalidPassword } from "../utils.js";
 
 //const productsService = new ProductsService();
 
@@ -20,20 +20,22 @@ export async function getUsers(req, res){
 export async function saveUser(req, res){
 
     //traigo los datos del body y los guardo en un objeto
-    const user={
-        first_name: req.body.first_name,
-        last_name:req.body.last_name,
-        email:req.body.email,
-        age: req.body.age,
-        password: createHash(req.body.password),
-        loggedBy: req.body.loggedBy,
-        role:req.body.role
-    }
-   
+    const {first_name,last_name,email,age,password, loggedBy,role }= req.body;
+    
     try {
+
+        const user={
+            first_name,
+            last_name,
+            email,
+            age,
+            password: createHash(password),
+            loggedBy,
+            role
+        }
    
         let result= await usersService.save(user);
-        res.status(201).send(result);
+        res.status(201).send({result:result, message: "usuario creado con exito"});
         
     } catch (error) {
         

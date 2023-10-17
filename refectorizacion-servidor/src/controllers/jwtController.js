@@ -1,13 +1,14 @@
+
 import { userModel } from '../services/dao/db/models/userModel.js';
 import { isvalidPassword } from '../utils.js'
-import { generateJWToken } from '../utils.js';
+import { createHash,generateJWToken } from '../utils.js';
 
 export async function loginUser (req, res){
 
+    const { email, password } = req.body;
+    
     try {
 
-        const { email, password } = req.body;
-        
         const user = await userModel.findOne({email:email});
         console.log("usuario encontrado para login: " + user);
 
@@ -18,11 +19,8 @@ export async function loginUser (req, res){
 
         if(!isvalidPassword(user, password)){
             console.warn("credenciales invalidas para el usuario: " + email);
-            console.log(isvalidPassword(user,password));
             return res.status(401).send({status: "error", error: "El usuario y la contraseña no coinciden"});
         }
-
-        console.log(isvalidPassword(user,password));
 
         //crea el token
         const tokenUser={
@@ -34,7 +32,7 @@ export async function loginUser (req, res){
 
         //llamo a la funcion que crea el token
         const access_token= generateJWToken(tokenUser);
-        console.log(access_token);
+        console.log(" token: " + access_token);
 
         res.cookie('jwtCookieToken', access_token,{
             maxAge: 6000,
