@@ -1,4 +1,4 @@
-import passport from 'passport';
+import passport, { use } from 'passport';
 import { userModel } from '../services/dao/db/models/userModel.js';
 import jwtStrategy from 'passport-jwt';
 import GitHubStrategy from 'passport-github2';
@@ -43,6 +43,9 @@ const initializePassport = () =>{
                     }
                     const result= usersService.save(newUser);
                     done(null, result);
+                
+                }else{
+                    return done(null, user);
                 }
 
             } catch (error) {

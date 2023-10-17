@@ -11,6 +11,7 @@ import productsRoutes from './routes/productsRoutes.js';
 import usersRoutes from './routes/usersRoutes.js';
 import jwtRoutes from './routes/jwtRoutes.js';
 import emailRoutes from './routes/emailRouter.js';
+import githubRoutes from './routes/gitHubRoutes.js';
 
 const app = express();
 
@@ -22,12 +23,13 @@ app.use(cookieParser("CoderSecret"));
 //app.use(passport.initialize());
 
 
-
+//rutas
 app.use('/api/products',productsRoutes);
 app.use('/api/carts',cartsRoutes);
 app.use('/api/users',usersRoutes);
 app.use('/api/jwt',jwtRoutes);
 app.use('/api/email', emailRoutes);
+app.use('/api/git', githubRoutes);
 
 const PORT = 9090;
 app.listen(PORT,()=>{
