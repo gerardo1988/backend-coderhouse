@@ -1,4 +1,4 @@
-import passport, { use } from 'passport';
+import passport from 'passport';
 import { userModel } from '../services/dao/db/models/userModel.js';
 import jwtStrategy from 'passport-jwt';
 import GitHubStrategy from 'passport-github2';

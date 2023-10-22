@@ -1,8 +1,10 @@
 import { Router } from "express";
+import CustomRouter from "./custom/customRouter.js";
 import * as JwtController from "../controllers/jwtController.js";
 
-const router = Router();
-
-router.post("/", JwtController.loginUser);
-
-export default router;
+export default class UsersExtendRouter extends CustomRouter{
+    
+    init(){
+        this.post("/",['ADMIN'], JwtController.loginUser);
+    }
+}
