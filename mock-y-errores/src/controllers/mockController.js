@@ -1,6 +1,6 @@
-import { generateProduct } from "../utils";
+import { generateProduct } from "../utils.js";
 
-export const getUser = async(req, res) =>{
+export const getProductsMock = async(req, res) =>{
     try {
 
         let products = [];
@@ -9,6 +9,7 @@ export const getUser = async(req, res) =>{
             products.push(generateProduct());
             
         }
+        res.status(200).send({status:'success', payload: products})
         
     } catch (error) {
         console.error(error);

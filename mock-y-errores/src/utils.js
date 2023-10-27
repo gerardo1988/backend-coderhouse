@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { faker, fakerES } from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -47,7 +47,16 @@ export const authToken = (req, res, next)=>{
 }
 
 //todo para hacer los mock
+faker.locale = 'es';
 export const generateProduct = () =>{
+
+    return {
+        title: faker.commerce.productName(),
+        price: faker.commerce.price(),
+        stock: faker.random.numeric(1),
+        id: faker.database.mongodbObjectId(),
+        image: faker.image.image()
+    }
     
 }
 

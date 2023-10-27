@@ -14,6 +14,7 @@ import initializePassport from './config/passport.config.js';
 import emailRoutes from './routes/emailRouter.js';
 import githubRoutes from './routes/gitHubRoutes.js';
 import UsersExtendRouter from './routes/jwtRoutes.js';
+import mockProducts from './routes/mockRoutes.js'
 
 const app = express();
 
@@ -32,6 +33,8 @@ app.use('/api/users',usersRoutes);
 app.use('/api/jwt',userjwtRouter.getRouter());
 app.use('/api/email', emailRoutes);
 app.use('/api/git', githubRoutes);
+app.use('/', mockProducts);
+
 
 const PORT = 9090;
 app.listen(PORT,()=>{
