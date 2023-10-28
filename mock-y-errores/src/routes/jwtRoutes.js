@@ -5,6 +5,6 @@ import * as JwtController from "../controllers/jwtController.js";
 export default class UsersExtendRouter extends CustomRouter{
     
     init(){
-        this.post("/",['ADMIN'], JwtController.loginUser);
+        this.post("/",['USER'], JwtController.loginUser);
     }
 }

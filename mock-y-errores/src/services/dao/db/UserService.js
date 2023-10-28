@@ -42,7 +42,7 @@ export default class ProductsService {
     getOne = async(_id)=>{
         try {
 
-            let findUser = await userModel.findById({_id:_id});
+            let findUser = await userModel.findById({_id:_id}).populate("cart");
             return findUser;
             
         } catch (error) {

@@ -20,7 +20,7 @@ export async function getUsers(req, res){
 export async function saveUser(req, res){
 
     //traigo los datos del body y los guardo en un objeto
-    const {first_name,last_name,email,age,password, loggedBy,role }= req.body;
+    const {first_name,last_name,email,age,password, loggedBy,role,cart }= req.body;
     
     try {
 
@@ -31,7 +31,8 @@ export async function saveUser(req, res){
             age,
             password: createHash(password),
             loggedBy,
-            role
+            role,
+            cart
         }
    
         let result= await usersService.save(user);
