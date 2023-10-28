@@ -2,9 +2,8 @@
 import { productsService } from  '../services/factory.js';
 import Customerror from '../errors/CustomError.js';
 import EErrors from '../errors/errorsEnum.js';
-import { getproductsErroInfo, createproductsErroInfo } from '../errors/messages/usersError.js';
-
-//const productsService = new ProductsService();
+import { getproductsErroInfo, createproductsErroInfo, 
+    deleteproductErroInfo, getOneProductErroInfo } from '../errors/messages/productsError.js';
 
 export async function getProducts(req, res){
      
@@ -65,14 +64,25 @@ export async function saveProduct(req, res){
 export async function deleteProduct(req, res){
 
     try {
-        
+
         let _id = req.params._id;
+        let productById = await productsService.getOne(_id);
+        
+        if(!productById){
+                Customerror.createError({
+                    name: "Delete product error",
+                    cause: deleteproductErroInfo(_id),
+                    message: "error al tratar de eliminar un producto",
+                    code: EErrors.INVALID_TYPES_ERROR
+                });
+            }
+        
         let result = await productsService.delete(_id);
         res.status(200).send({message: "se elimino el producto con id: " + _id})
     } catch (error) {
         
         console.error(error);
-        res.status(500).send({error:error, message:"no se pudo eliminar el producto"});
+        res.status(500).send({error:error.code, message: error.message});
     }
 }
 
@@ -82,10 +92,20 @@ export async function getOneProduct(req,res){
 
         let _id = req.params._id;
         let result = await productsService.getOne(_id);
+
+        if(!result){
+            Customerror.createError({
+                name: "get producto by Id error",
+                cause: getOneProductErroInfo(_id),
+                message: "error al tratar de traer un producto",
+                code: EErrors.INVALID_TYPES_ERROR
+            });
+        }
+
         res.status(200).send(result)
         
     } catch (error) {
         console.error(error);
-        res.status(500).send({error:error, message:"no encontro ningun producto con el id: " + _id});
+        res.status(500).send({error:error.code, message: error.message});
     }
 }

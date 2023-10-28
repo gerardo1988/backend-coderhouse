@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 
 const Schema = new mongoose.Schema({
+    
     title:{
         type: String,
         require: [true,"el titulo es requerido"]

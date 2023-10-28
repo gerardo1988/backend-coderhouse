@@ -27,13 +27,14 @@ app.use(passport.initialize());
 
 const userjwtRouter = new UsersExtendRouter();
 //rutas
+app.use('/', mockProducts);
 app.use('/api/products',productsRoutes);
 app.use('/api/carts',cartsRoutes);
 app.use('/api/users',usersRoutes);
 app.use('/api/jwt',userjwtRouter.getRouter());
 app.use('/api/email', emailRoutes);
 app.use('/api/git', githubRoutes);
-app.use('/', mockProducts);
+
 
 
 const PORT = 9090;
