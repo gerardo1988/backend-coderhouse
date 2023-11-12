@@ -1,6 +1,6 @@
 import { userModel } from "./models/userModel.js";
 
-export default class ProductsService {
+export default class UserService {
     
     getAll = async() => {
         try {

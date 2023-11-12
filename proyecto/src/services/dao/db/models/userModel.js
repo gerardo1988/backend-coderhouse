@@ -11,10 +11,14 @@ const schema = new mongoose.Schema({
     },
     age: Number,
     password: String,
-    loggedBy: String,
+    loggedBy:{
+        type:String,
+        require: false
+    },
     role:{
         type: String,
         default: 'user',
+        require: false,
         enum: ['user', 'admin']
     },
     cart: [
