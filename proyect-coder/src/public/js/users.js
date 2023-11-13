@@ -1,3 +1,4 @@
+
 function llamarApi(){
     console.log("Llamando api users.");
     const userId = localStorage.getItem('USER_ID');
@@ -30,3 +31,24 @@ function llamarApi(){
     })
 };
 llamarApi();
+
+//para cerrar sesion
+const buttonLogout = document.getElementById('cerrar_sesion');
+
+buttonLogout.addEventListener('click',()=>{
+    fetch('/api/users/logoutuser',{
+        method:'GET'
+    }).then(result=>{
+        if(result.status===200){
+                         
+            alert("usted esta por cerrar sesion y sera redirigido");
+            window.location.replace('/loginuser');
+
+        } else {
+            console.log(result);
+            alert("error al cerrar sesion");
+        }
+    }).catch(error=>{
+        console.log(error);
+    })
+})

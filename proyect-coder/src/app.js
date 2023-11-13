@@ -3,6 +3,7 @@ import __dirname from './utils.js';
 import config from './config/config.js';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
+import session from 'express-session';
 import handlebars from 'express-handlebars';
 //import initializePassport from './config/passport.config.js';
 
@@ -34,7 +35,9 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/public'));
 
 initializePassport();
+app.use(session());
 app.use(passport.initialize());
+app.use(passport.session());
 
 const userjwtRouter = new UsersExtendRouter();
 //rutas

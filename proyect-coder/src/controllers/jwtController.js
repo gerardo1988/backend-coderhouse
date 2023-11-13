@@ -1,4 +1,5 @@
 
+
 import { userModel } from '../services/dao/db/models/userModel.js';
 import { isvalidPassword } from '../utils.js'
 import { createHash,generateJWToken } from '../utils.js';
@@ -46,4 +47,19 @@ export async function loginUser (req, res){
         console.error(error);
         return res.status(500).send({ status: "error", error: "Error interno de la applicacion." });
     }
+}
+
+export async function logout (req, res) {
+
+    try {
+        if(req.session.destroy){
+            res.status(200).send({status:"Sesion cerrada correctamente"});
+        }
+          
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send({ status: "error", error: "Error al cerrar la sesion" });
+    }
+    
+
 }

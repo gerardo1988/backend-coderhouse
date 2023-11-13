@@ -10,5 +10,6 @@ export default class UsersExtendRouter extends CustomRouter{
         this.get("/currentUser", ["USER"], (req, res) => {
             res.sendSuccess(req.user);
         });
+
     }
 }
