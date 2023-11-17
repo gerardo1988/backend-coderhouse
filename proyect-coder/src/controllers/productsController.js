@@ -8,7 +8,7 @@ import { getproductsErroInfo, createproductsErroInfo,
 export async function getProducts(req, res){
      
     try {
-        let products= '';
+        let products= await productsService.getAll();
         if(!products){
             Customerror.createError({
                 name: "Get products error",

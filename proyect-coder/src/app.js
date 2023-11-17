@@ -2,9 +2,12 @@ import express from 'express';
 import __dirname from './utils.js';
 import config from './config/config.js';
 import cookieParser from 'cookie-parser';
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUIExpress from 'swagger-ui-express';
 import passport from 'passport';
 import session from 'express-session';
 import handlebars from 'express-handlebars';
+
 //import initializePassport from './config/passport.config.js';
 
 //rutas
@@ -38,6 +41,21 @@ initializePassport();
 app.use(session());
 app.use(passport.initialize());
 app.use(passport.session());
+
+//configuracion de swagger
+const swaggerOption = {
+    definition: {
+        openapi: "3.0.1",
+        info:{
+            title:"Documentacion ecommerce",
+            description: "documentacion del proyecto de coderhouse"
+        }      
+    },
+    apis:[`./src/docs/**/*.yaml`]
+}
+
+const specs = swaggerJSDoc(swaggerOption);
+app.use('/apidocs', swaggerUIExpress.serve, swaggerUIExpress.setup(specs));
 
 const userjwtRouter = new UsersExtendRouter();
 //rutas
