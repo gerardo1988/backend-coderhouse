@@ -52,5 +52,14 @@ export default class CartsService{
         }
     }
 
+    update = async(_id, cart)=>{
+        try {
+            let cartdb = await CartsModel.updateOne({_id:_id},cart);
+            return cartdb;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
 
 }

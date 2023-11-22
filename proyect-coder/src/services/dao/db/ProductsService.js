@@ -50,6 +50,15 @@ export default class ProductsService {
             throw new Error(error);
         }
     }
+
+    update = async(_id, product)=>{
+        try {
+            let productdb = await ProductsModel.updateOne({_id:_id},product);
+            return productdb;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
 }
 
 

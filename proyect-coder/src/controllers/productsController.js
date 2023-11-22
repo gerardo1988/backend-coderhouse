@@ -108,4 +108,20 @@ export async function getOneProduct(req,res){
         console.error(error);
         res.status(500).send({error:error.code, message: error.message});
     }
+  
+}
+
+export async function updateProduct(req, res){
+
+    try {
+        
+        let product = req.body;
+        let _id = req.params._id;
+        let result = await productsService.update(_id,product);
+        res.status(202).send(product);
+    
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({error:error, message:"no se pudo modificar el producto"});
+    }
 }

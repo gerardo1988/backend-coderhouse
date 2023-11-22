@@ -59,3 +59,18 @@ export async function getOneCart(req,res){
     }
 }
 
+export async function updateCart(req, res){
+
+    try {
+        
+        let cart = req.body;
+        let _id = req.params._id;
+        let result = await cartsService.update(_id,cart);
+        res.status(202).send(cart);
+    
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({error:error, message:"no se pudo modificar el carrito"});
+    }
+}
+

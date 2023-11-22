@@ -67,6 +67,31 @@ paths:
           description: "no se ha encontrado un producto."
         "500":
           description: "Error inesperado del servidor, no se puede manejar el proceso."      
+  /api/products/update/{_id}:
+    put:
+      summary: actualiza un producto por id.
+      tags:
+        - Products
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          description: parametro para encontrar el id del producto a modificar
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        "202":
+          description: "operación exitosa, el producto se ha actualizado satisfactoriamente."
+        "400":
+          description: "no se ha encontrado un producto para actualizar."
+        "500":
+          description: "Error inesperado del servidor, no se puede manejar el proceso."
 
 components:
   schemas:

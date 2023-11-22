@@ -9,6 +9,7 @@ router.get("/get", UsersController.getUsers);
 router.post("/save", UsersController.saveUser);
 router.delete("/:_id", UsersController.deleteUser);
 router.get("/:_id", UsersController.getOneUser);
+router.put("/update/:_id", UsersController.updateUser);
 
 
 export default router;

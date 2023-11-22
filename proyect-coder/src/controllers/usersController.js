@@ -71,4 +71,20 @@ export async function getOneUser(req,res){
         console.error(error);
         res.status(500).send({error:error, message:"no encontro ningun usuario con el id: " + _id});
     }
+
+}
+
+export async function updateUser(req, res){
+
+    try {
+        
+        let user = req.body;
+        let _id = req.params._id;
+        let result = await usersService.update(_id,user);
+        res.status(202).send(user);
+    
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({error:error, message:"no se pudo modificar el usuario"});
+    }
 }

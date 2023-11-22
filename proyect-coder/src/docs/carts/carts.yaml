@@ -66,6 +66,31 @@ paths:
         "400":
           description: "no se ha encontrado un carrito."
         "500":
+          description: "Error inesperado del servidor, no se puede manejar el proceso."
+  /api/carts/update/{_id}:
+    put:
+      summary: actualiza un carrito por id.
+      tags:
+        - Carts
+      parameters:
+        - name: _id
+          in: path
+          required: true
+          description: parametro para encontrar el id del carrito a modificar
+          schema:
+            $type: String
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cart'
+      responses:
+        "202":
+          description: "operación exitosa, el carrito se ha actualizado satisfactoriamente."
+        "400":
+          description: "no se ha encontrado un carrito para actualizar."
+        "500":
           description: "Error inesperado del servidor, no se puede manejar el proceso."      
 
 components:

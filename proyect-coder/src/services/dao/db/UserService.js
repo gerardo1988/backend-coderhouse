@@ -50,5 +50,14 @@ export default class UserService {
             throw new Error(error);
         }
     }
+
+    update = async(_id, user)=>{
+        try {
+            let userdb = await userModel.updateOne({_id:_id},user);
+            return userdb;
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
 }
 
