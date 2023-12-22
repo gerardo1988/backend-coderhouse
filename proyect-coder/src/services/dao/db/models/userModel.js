@@ -13,13 +13,13 @@ const schema = new mongoose.Schema({
     password: String,
     loggedBy:{
         type:String,
-        require: false
+        required: false
     },
     role:{
         type: String,
-        default: 'user',
-        require: false,
-        enum: ['user', 'admin']
+        default: 'premium',
+        required: false,
+        enum: ['normal', 'premium']
     },
     cart: [
         {

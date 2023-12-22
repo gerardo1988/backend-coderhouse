@@ -5,9 +5,9 @@ import * as JwtController from "../controllers/jwtController.js";
 export default class UsersExtendRouter extends CustomRouter{
     
     init(){
-        this.post("/",['USER'], JwtController.loginUser);
+        this.post("/",['PREMIUM'], JwtController.loginUser);
 
-        this.get("/currentUser", ["USER"], (req, res) => {
+        this.get("/currentUser", ["PREMIUM"], (req, res) => {
             res.sendSuccess(req.user);
         });
 

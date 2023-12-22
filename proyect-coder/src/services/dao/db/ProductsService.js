@@ -31,6 +31,7 @@ export default class ProductsService {
         try {
 
             let deleteProduct = await ProductsModel.deleteOne({_id:_id});
+
             return deleteProduct;
             
         } catch (error) {

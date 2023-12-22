@@ -17,4 +17,8 @@ router.get("/users", (req, res)=>{
     });
 });
 
+router.get("/paymentOk", (req, res)=>{
+    res.render("paymentsuccess");
+});
+
 export default router;

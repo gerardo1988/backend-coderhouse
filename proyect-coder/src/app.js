@@ -22,6 +22,7 @@ import UsersExtendRouter from './routes/jwtRoutes.js';
 import mockProducts from './routes/mockRoutes.js';
 import loggerRoutes from './routes/loggerRoutes.js';
 import viewsRoutes from './routes/viewsRoutes/views.router.js';
+import paymentRoutes from './routes/paymentRoutes.js';
 
 const app = express();
 
@@ -68,7 +69,7 @@ app.use('/api/jwt',userjwtRouter.getRouter());
 app.use('/api/email', emailRoutes);
 app.use('/api/git', githubRoutes);
 app.use('/loggerTest', loggerRoutes);
-
+app.use('/api/payments', paymentRoutes);
 
 
 const PORT = config.port;

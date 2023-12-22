@@ -19,7 +19,7 @@ export default class CustomRouter{
     handlePolicies = policies => (req, res, next)=>{
 
         console.log("politicas a evaluar: " + policies);
-        if(policies[0]== "USER"){
+        if(policies[0]== "PREMIUM"){
             return next();
         }
 
